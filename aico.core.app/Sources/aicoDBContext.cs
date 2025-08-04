@@ -9,15 +9,15 @@ namespace aico.core.app.Sources
         public aicoDBContext(DbContextOptions<aicoDBContext> options)
         : base(options) { }
 
-        public DbSet<plan> plans { get; set; }
+        public DbSet<Plan> plans { get; set; }
     }
 
-    public class plan
+    public class Plan
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public bool active { get; set; }
+        public int Id { get; set; }
+        public required string Name { get; set; }
+        public required string Description { get; set; }
+        public bool Active { get; set; }
     }
     // Prerequisite references
     // Microsoft.EntityFrameworkCore

@@ -27,7 +27,7 @@ namespace aico.core.app.Controllers
             //string result = oac.send("What is Accenture?").GetOutputText();
 
             //TEST FOR DATABASE
-            List<plan> plans = _aicoDBContext.plans.ToList();
+            List<Plan> plans = _aicoDBContext.plans.ToList();
 
             //plan p = new plan();
             //p.name = "test plan 1";
@@ -54,7 +54,7 @@ namespace aico.core.app.Controllers
         {
 
             OpenAIClass oac = new OpenAIClass(_configuration);
-            string result = oac.send(prompt).GetOutputText();
+            string result = oac.Send(prompt).GetOutputText();
             ViewBag.Result = result;
 
             return Json(new { });

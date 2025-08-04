@@ -1,36 +1,54 @@
+using aico.core.app.Controllers;
+using aico.core.app.Models;
 using aico.core.app.Sources;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+// -----------------------------
+// 1. Configure Services
+// -----------------------------
 
-// Add Swagger services
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure Entity Framework
-var aicoConnectionString = builder.Configuration.GetConnectionString("aicoConnectionString");
-builder.Services.AddDbContext<aicoDBContext>(options => options.UseSqlServer(aicoConnectionString));
+// MVC / Controllers
+builder.Services.AddControllersWithViews();
 
+// Entity Framework - SQL Server
+var aicoConnectionString = builder.Configuration.GetConnectionString("aicoConnectionString");
+builder.Services.AddDbContext<aicoDBContext>(options =>
+    options.UseSqlServer(aicoConnectionString));
+
+// OpenAI Config Binding
+builder.Services.Configure<OpenAIConfig>(builder.Configuration.GetSection("OpenAI"));
+builder.Services.AddHttpClient<OpenAIController>();
+
+
+// -----------------------------
+// 2. Build App
+// -----------------------------
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+// -----------------------------
+// 3. Configure Middleware
+// -----------------------------
+
+if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
-else
-{
-    // Enable Swagger in development
+    // Swagger in Development
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "AICO API V1");
-        c.RoutePrefix = "swagger"; // Swagger UI available at /swagger
+        c.RoutePrefix = "swagger"; // Available at /swagger
     });
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -40,6 +58,9 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// -----------------------------
+// 4. Endpoint Mapping
+// -----------------------------
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Register}/{action=Index}/{id?}");

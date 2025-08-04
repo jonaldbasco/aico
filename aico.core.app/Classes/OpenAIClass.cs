@@ -22,7 +22,7 @@ namespace aico.core.app.Classes
         }
 
         //Text Request
-        public OpenAIResponse send(string text) 
+        public OpenAIResponse Send(string text) 
         {
             OpenAIResponse response = client.CreateResponse(text);
             string result = response.GetOutputText();
