@@ -12,6 +12,40 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/aico.core.app.styles.css" asp-append-version="true" />
 </head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #eee;
+        border-radius: 4px;
+        margin-right: 5px;
+    }
+</style>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -38,6 +72,64 @@
         <main role="main" class="pb-3">
 
         </main>
+    </div>
+
+    <div class="section">
+        <h2>Welcome, John Doe</h2>
+        <p>Your intelligent health companion is ready</p>
+    </div>
+
+    <div class="section card">
+        <h3>Plan Coverage</h3>
+        <p>Available: ₱127,500</p>
+        <p>Original: ₱150,000</p>
+        <p>85.0% remaining</p>
+        <p>Used This Year: ₱22,500</p>
+        <p>Recent: Dental cleaning (₱3,500)</p>
+    </div>
+
+    <div class="section card">
+        <h3>Health Status</h3>
+        <p>Active: Diabetes</p>
+        <p>Last checkup: 3 months ago</p>
+    </div>
+
+    <div class="section card">
+        <h3>Health Plan Summary</h3>
+        <p><strong>Maxicare EReady Plus</strong></p>
+        <p>Your Maxicare health plan details and benefits</p>
+        <ul>
+            <li>In-patient hospitalization</li>
+            <li>Out-patient consultations</li>
+            <li>Emergency care coverage</li>
+            <li>Diagnostic tests and procedures</li>
+        </ul>
+        <button class="button">Find Healthcare Providers</button>
+    </div>
+
+    <div class="section card">
+        <h3>Health Monitoring</h3>
+        <div>
+            <h4>Lab Test Required</h4>
+            <p>CBC and HBA1c recommended every 3 months</p>
+            <p>Due: Next week</p>
+            <span class="badge">Medium</span>
+        </div>
+        <div>
+            <h4>Checkup Reminder</h4>
+            <p>Annual cardiology consultation due</p>
+            <p>Due: This month</p>
+            <span class="badge">Low</span>
+        </div>
+        <button class="button">Get AI Recommendations</button>
+    </div>
+
+    <div class="section card">
+        <h3>Member Information</h3>
+        <p><strong>Location:</strong> Quezon City</p>
+        <p><strong>Contact:</strong> 0917-123-4567</p>
+        <p><strong>Chronic Conditions:</strong> Diabetes</p>
+        <p><strong>Current Interest:</strong> Cataract Surgery</p>
     </div>
 
     <footer class="border-top footer text-muted">

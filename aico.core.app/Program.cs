@@ -2,6 +2,8 @@ using aico.core.app.Controllers;
 using aico.core.app.Models;
 using aico.core.app.Sources;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +25,14 @@ builder.Services.AddDbContext<aicoDBContext>(options =>
 
 // OpenAI Config Binding
 builder.Services.Configure<OpenAIConfig>(builder.Configuration.GetSection("OpenAI"));
-builder.Services.AddHttpClient<OpenAIController>();
-
+//builder.Services.AddHttpClient<OpenAIController>();
+builder.Services.AddHttpClient<OpenAIController>((sp, client) =>
+{
+    var config = sp.GetRequiredService<IOptions<OpenAIConfig>>().Value;
+    client.BaseAddress = new Uri("https://api.openai.com/v1/");
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", config.ApiKey);
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+});
 
 // -----------------------------
 // 2. Build App
