@@ -1,8 +1,11 @@
+using aico.core.app.Classes;
 using aico.core.app.Controllers;
 using aico.core.app.Models;
+using aico.core.app.Plugin; // <- EmailPlugin is in this namespace
 using aico.core.app.Sources;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.SemanticKernel;
 using System.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +28,7 @@ builder.Services.AddDbContext<aicoDBContext>(options =>
 
 // OpenAI Config Binding
 builder.Services.Configure<OpenAIConfig>(builder.Configuration.GetSection("OpenAI"));
-//builder.Services.AddHttpClient<OpenAIController>();
+
 builder.Services.AddHttpClient<OpenAIController>((sp, client) =>
 {
     var config = sp.GetRequiredService<IOptions<OpenAIConfig>>().Value;
@@ -35,22 +38,41 @@ builder.Services.AddHttpClient<OpenAIController>((sp, client) =>
 });
 
 // -----------------------------
-// 2. Build App
+// 2. Semantic Kernel & EmailPlugin Setup
+// -----------------------------
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
+builder.Services.AddSingleton<EmailPlugin>();
+
+// Register Semantic Kernel
+builder.Services.AddSingleton<Kernel>(sp =>
+{
+    var emailPlugin = sp.GetRequiredService<EmailPlugin>();
+
+    var builder = Kernel.CreateBuilder();
+
+    // Import plugins BEFORE building the kernel
+    builder.Plugins.AddFromObject(emailPlugin, "email");
+
+    var kernel = builder.Build();
+
+    return kernel;
+});
+
+// -----------------------------
+// 3. Build App
 // -----------------------------
 var app = builder.Build();
 
 // -----------------------------
-// 3. Configure Middleware
+// 4. Configure Middleware
 // -----------------------------
-
 if (app.Environment.IsDevelopment())
 {
-    // Swagger in Development
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "AICO API V1");
-        c.RoutePrefix = "swagger"; // Available at /swagger
+        c.RoutePrefix = "swagger";
     });
 }
 else
@@ -67,7 +89,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 // -----------------------------
-// 4. Endpoint Mapping
+// 5. Endpoint Mapping
 // -----------------------------
 app.MapControllerRoute(
     name: "default",
