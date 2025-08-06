@@ -1,0 +1,64 @@
+{
+  "BasicProfile": {
+    "Name": "Maria Isabel Santos",
+    "Age": 58,
+    "Gender": "Female",
+    "HMOProvider": "Maxicare",
+    "MaxicareTier": "Maxicare Platinum (with enhanced coverage for specialists, diagnostics, chronic care, and executive check-ups)",
+    "PrimaryHospital": "Cardinal Santos Medical Center",
+    "PreferredLanguage": [ "Filipino", "English" ]
+  },
+  "MedicalHistory": {
+    "Conditions": [
+      {
+        "Name": "COPD (Chronic Lung Disease)",
+        "Status": "Diagnosed 5 years ago",
+        "Notes": "Maintenance inhaler + oxygen therapy during flare-ups"
+      },
+      {
+        "Name": "Hypothyroidism",
+        "Status": "Diagnosed 8 years ago",
+        "Notes": "On levothyroxine"
+      }
+    ],
+    "Hospitalization": {
+      "Frequency": "Twice in past 2 years",
+      "Reason": "COPD exacerbation"
+    },
+    "SmokingHistory": {
+      "Status": "Quit",
+      "YearsSmoked": 20,
+      "QuitYear": 2015
+    },
+    "FamilyHistory": {
+      "Conditions": [ "Thyroid disorders", "Asthma" ]
+    },
+    "Allergy": "Sulfa drugs"
+  },
+  "DiagnosticResults": {
+    "ArterialBloodGas": {
+      "Result": "Mild hypoxia",
+      "Date": "May 2025"
+    },
+    "PulmonaryFunctionTest": {
+      "Result": "FEV1: 58% predicted (moderate COPD)",
+      "Date": "May 2025"
+    },
+    "ChestXray": {
+      "Result": "Hyperinflated lungs",
+      "Date": "May 2025"
+    },
+    "TSH": {
+      "Result": "6.8 mIU/L (elevated)",
+      "Date": "June 2025"
+    },
+    "FreeT4": {
+      "Result": "Low",
+      "Date": "June 2025"
+    },
+    "CBC": {
+      "Result": "Slight anemia",
+      "Date": "June 2025"
+    }
+  }
+}

@@ -33,7 +33,7 @@ builder.Services.AddHttpClient<OpenAIController>((sp, client) =>
 {
     var config = sp.GetRequiredService<IOptions<OpenAIConfig>>().Value;
     client.BaseAddress = new Uri("https://api.openai.com/v1/");
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", config.ApiKey);
+    //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", config.ApiKey);
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 });
 

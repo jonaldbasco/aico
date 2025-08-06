@@ -1,0 +1,107 @@
+{
+  "BasicProfile": {
+    "Name": "Lourdes De Guzman",
+    "Age": 67,
+    "Gender": "Female",
+    "HMOProvider": "Intellicare",
+    "IntellicarePlan": "Executive Platinum (covers cancer follow-ups, diagnostics, chronic illness treatment, endocrinology, outpatient, inpatient)",
+    "PrimaryHospital": "Makati Medical Center",
+    "PreferredLanguage": [ "Filipino" ]
+  },
+  "MedicalHistory": {
+    "Conditions": [
+      {
+        "Name": "Chronic Kidney Disease (CKD) – Stage 3",
+        "Status": "Ongoing",
+        "Notes": "Declining eGFR, monitored every 3 months"
+      },
+      {
+        "Name": "Type 2 Diabetes Mellitus",
+        "Status": "Insulin-dependent",
+        "Notes": "Poor control, frequent hypoglycemic episodes"
+      },
+      {
+        "Name": "Hypertension",
+        "Status": "Controlled",
+        "Notes": "On amlodipine and losartan"
+      },
+      {
+        "Name": "Breast Cancer – Stage 2B",
+        "Status": "Post-chemo and mastectomy",
+        "Notes": "On tamoxifen, routine tumor markers and imaging"
+      },
+      {
+        "Name": "Osteoporosis",
+        "Status": "Diagnosed 2 years ago",
+        "Notes": "On calcium + bisphosphonates"
+      },
+      {
+        "Name": "Thyroid Nodules",
+        "Status": "Suspicious",
+        "Notes": "Requires biopsy every 12 months"
+      },
+      {
+        "Name": "Fatty Liver",
+        "Status": "Diagnosed 3 years ago",
+        "Notes": "Controlled via diet"
+      },
+      {
+        "Name": "Anemia of chronic disease",
+        "Status": "Related to CKD",
+        "Notes": "Receives iron supplementation"
+      }
+    ]
+  },
+  "DiagnosticResults": {
+    "CBC": {
+      "Hemoglobin": "102 g/L",
+      "ReferenceRange": "120–150 g/L",
+      "Interpretation": "Low",
+      "Hematocrit": "0.31 L/L",
+      "ReferenceRange": "0.37–0.47",
+      "Interpretation": "Low",
+      "PlateletCount": "390 ×10⁹/L",
+      "ReferenceRange": "150–400",
+      "Interpretation": "Normal high"
+    },
+    "Creatinine": {
+      "Result": "1.62 mg/dL",
+      "ReferenceRange": "0.57–1.10",
+      "Interpretation": "High"
+    },
+    "eGFR": {
+      "Result": "49.0 mL/min/1.73m²",
+      "ReferenceRange": "≥ 60",
+      "Interpretation": "Stage 3 CKD"
+    },
+    "Calcium": {
+      "Result": "8.1 mg/dL",
+      "ReferenceRange": "8.5–10.2",
+      "Interpretation": "Slightly low — needs monitoring"
+    },
+    "TSH": {
+      "Result": "4.9 mIU/L",
+      "ReferenceRange": "0.4–4.0",
+      "Interpretation": "Elevated — mild hypothyroid"
+    },
+    "FastingBloodSugar": {
+      "Result": "175 mg/dL",
+      "ReferenceRange": "70–99",
+      "Interpretation": "High"
+    },
+    "HbA1c": {
+      "Result": "8.4%",
+      "ReferenceRange": "< 7.0%",
+      "Interpretation": "Poor glucose control"
+    },
+    "AST_ALT": {
+      "Result": "Normal",
+      "Interpretation": "Liver function okay"
+    },
+    "TumorMarker_CA15_3": {
+      "Result": "25 U/mL",
+      "ReferenceRange": "< 30",
+      "Interpretation": "Within surveillance range"
+    }
+  }
+}
