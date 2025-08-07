@@ -102,6 +102,6 @@ app.UseAuthorization();
 // -----------------------------
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Register}/{action=Index}/{id?}");
+    pattern: "{controller=AIRecommend}/{action=Index}/{id?}");
 
 app.Run();
