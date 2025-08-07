@@ -27,7 +27,7 @@ namespace aico.core.app.Controllers
             //string result = oac.send("What is Accenture?").GetOutputText();
 
             //TEST FOR DATABASE
-            List<plan> plans = _aicoDBContext.plans.ToList();
+            //List<plan> plans = _aicoDBContext.plans.ToList();
 
             //plan p = new plan();
             //p.name = "test plan 1";
