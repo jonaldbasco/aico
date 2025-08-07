@@ -1,7 +1,7 @@
 using aico.core.app.Classes;
 using aico.core.app.Controllers;
 using aico.core.app.Models;
-using aico.core.app.Plugin; // <- EmailPlugin is in this namespace
+using aico.core.app.Plugin;
 using aico.core.app.Services;
 using aico.core.app.Sources;
 using Microsoft.EntityFrameworkCore;
@@ -9,71 +9,70 @@ using Microsoft.Extensions.Options;
 using Microsoft.SemanticKernel;
 using System.Net.Http.Headers;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // -----------------------------
 // 1. Configure Services
 // -----------------------------
 
-// Swagger
+builder.WebHost.ConfigureKestrel((context, options) =>
+{
+    options.Configure(context.Configuration.GetSection("Kestrel"));
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// MVC / Controllers
 builder.Services.AddControllersWithViews();
 
-// Entity Framework - SQL Server
 var aicoConnectionString = builder.Configuration.GetConnectionString("aicoConnectionString");
 builder.Services.AddDbContext<aicoDBContext>(options =>
     options.UseSqlServer(aicoConnectionString));
 
-// OpenAI Config Binding
 builder.Services.Configure<OpenAIConfig>(builder.Configuration.GetSection("OpenAI"));
-
-builder.Services.AddHttpClient<OpenAIController>((sp, client) =>
-{
-    var config = sp.GetRequiredService<IOptions<OpenAIConfig>>().Value;
-    client.BaseAddress = new Uri("https://api.openai.com/v1/");
-    //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", config.ApiKey);
-    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-});
-
-// -----------------------------
-// 2. Semantic Kernel & EmailPlugin Setup
-// -----------------------------
-builder.Services.AddScoped<JsonLoaderService>();
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
+
+//builder.Services.AddHttpClient<OpenAIController>((sp, client) =>
+//{
+//    var config = sp.GetRequiredService<IOptions<OpenAIConfig>>().Value;
+//    client.BaseAddress = new Uri("https://api.openai.com/v1/");
+//    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+//});
+
+builder.Services.AddScoped<JsonLoaderService>();
 builder.Services.AddSingleton<EmailPlugin>();
 
-// Register Semantic Kernel
+// -----------------------------
+// 3. Register Kernel
+// -----------------------------
 builder.Services.AddSingleton<Kernel>(sp =>
 {
     var config = sp.GetRequiredService<IOptions<OpenAIConfig>>().Value;
     var emailPlugin = sp.GetRequiredService<EmailPlugin>();
 
-    var builder = Kernel.CreateBuilder();
+    var kernelBuilder = Kernel.CreateBuilder();
 
-    // Import plugins BEFORE building the kernel
-    builder.AddOpenAIChatCompletion(
+    kernelBuilder.AddOpenAIChatCompletion(
         modelId: config.Model,
         apiKey: config.ApiKey
     );
-    builder.Plugins.AddFromPromptDirectory("Plugin", "HealthSummarizer"); // Health Summary Plugin
-    builder.Plugins.AddFromObject(emailPlugin, "email"); // Email Plugin
 
-    var kernel = builder.Build();
+    kernelBuilder.Plugins.AddFromPromptDirectory("Plugin", "HealthSummarizer");
+    kernelBuilder.Plugins.AddFromObject(emailPlugin, "email");
 
+    var kernel = kernelBuilder.Build();
 
+    // Memory is available via DI, not attached directly to kernel
     return kernel;
 });
 
 // -----------------------------
-// 3. Build App
+// 4. Build App
 // -----------------------------
 var app = builder.Build();
 
 // -----------------------------
-// 4. Configure Middleware
+// 5. Configure Middleware
 // -----------------------------
 if (app.Environment.IsDevelopment())
 {
@@ -92,13 +91,11 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 // -----------------------------
-// 5. Endpoint Mapping
+// 6. Endpoint Mapping
 // -----------------------------
 app.MapControllerRoute(
     name: "default",

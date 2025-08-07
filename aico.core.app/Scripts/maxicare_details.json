@@ -1,0 +1,155 @@
+[
+  {
+    "Plan": "MyMaxicare Platinum Plus",
+    "MBL_ABL": "₱250K",
+    "Room": "Large Private Room",
+    "CommonAcuteIllnesses": "Dengue, pneumonia, viral/bacterial infections, animal bites, injuries, etc.",
+    "NonDreadedPEC": "Hernias, benign tumors, migraines, cysts, hemorrhoids, etc. (up to 10% of MBL Year 1; full Year 2+)",
+    "DreadedPEC": "Cancer, diabetes, hypertension, COPD, CKD, stroke, arthritis, chronic dermatoses, congenital illnesses (PE at 10% of MBL)",
+    "OtherBenefits": "Full IP/OP/emergency/ACU; Preventive (CBC, Urinalysis, Fecalysis, Chest X‑ray, Physical Exam); Dental optional; Life insurance with AD&D up to ₱50K; International Assist; Scoliosis & congenital illness consults; TUIP"
+  },
+  {
+    "Plan": "MyMaxicare Platinum",
+    "MBL_ABL": "₱200K",
+    "Room": "Regular Private Room",
+    "CommonAcuteIllnesses": "Same as above",
+    "NonDreadedPEC": "Same as above",
+    "DreadedPEC": "Same as above",
+    "OtherBenefits": "Same benefits scaled accordingly"
+  },
+  {
+    "Plan": "MyMaxicare Gold",
+    "MBL_ABL": "₱150K",
+    "Room": "Regular Private Room",
+    "CommonAcuteIllnesses": "Same as above",
+    "NonDreadedPEC": "Same",
+    "DreadedPEC": "Same",
+    "OtherBenefits": "Same benefits"
+  },
+  {
+    "Plan": "MyMaxicare Silver",
+    "MBL_ABL": "₱100K",
+    "Room": "Semi‑Private Room",
+    "CommonAcuteIllnesses": "Same as above",
+    "NonDreadedPEC": "Same",
+    "DreadedPEC": "Same",
+    "OtherBenefits": "Same benefits"
+  },
+  {
+    "Plan": "Maxicare Starter Plan (SME)",
+    "MBL_ABL": "Varies by tier (≈₱60–230K)",
+    "Room": "Small Suite to Semi‑Private",
+    "CommonAcuteIllnesses": "Same acute illnesses",
+    "NonDreadedPEC": "Non‑dreaded PECs covered within tiered MBL (10% Year 1; possible full Year 2+)",
+    "DreadedPEC": "Chronic/dreaded within tiered MBL (PEC 10%)",
+    "OtherBenefits": "Full IP/OP/emergency/ACU; Dental life insurance (AD&D); animal bite & accident coverage; hospital network access"
+  },
+  {
+    "Plan": "Maxicare PLUS Platinum (SME)",
+    "MBL_ABL": "Highest ABL tier",
+    "Room": "Private Room (varies)",
+    "CommonAcuteIllnesses": "Same acute illnesses",
+    "NonDreadedPEC": "Non‑dreaded PECs within ABL",
+    "DreadedPEC": "Dreaded illnesses within ABL",
+    "OtherBenefits": "Full-risk HMO: IP/OP/emergency/ACU; Optional dental & life insurance; Optional cancer coverage; Wellness/Executive check‑ups"
+  },
+  {
+    "Plan": "Maxicare PLUS Gold (SME)",
+    "MBL_ABL": "Mid–High ABL tier",
+    "Room": "Private Room (varies)",
+    "CommonAcuteIllnesses": "Same",
+    "NonDreadedPEC": "Same",
+    "DreadedPEC": "Same",
+    "OtherBenefits": "Same as Platinum tier, tailored for mid–high level businesses"
+  },
+  {
+    "Plan": "Maxicare PLUS Silver (SME)",
+    "MBL_ABL": "Mid ABL tier",
+    "Room": "Semi‑Private Room",
+    "CommonAcuteIllnesses": "Same",
+    "NonDreadedPEC": "Same",
+    "DreadedPEC": "Same",
+    "OtherBenefits": "Similar benefits aligned to medium-tier"
+  },
+  {
+    "Plan": "Maxicare PLUS Bronze (SME)",
+    "MBL_ABL": "Lowest ABL tier",
+    "Room": "Semi‑Private Room",
+    "CommonAcuteIllnesses": "Same",
+    "NonDreadedPEC": "Same",
+    "DreadedPEC": "Same",
+    "OtherBenefits": "Same full-risk HMO, streamlined for smaller ABL tier businesses"
+  },
+  {
+    "Plan": "Maxicare Corporate (Large Corp.)",
+    "MBL_ABL": "Customizable",
+    "Room": "Private Room (as selected)",
+    "CommonAcuteIllnesses": "Same acute illnesses",
+    "NonDreadedPEC": "PEC illness coverage per custom MBL/ABL plan custom terms",
+    "DreadedPEC": "Same custom chronic coverage",
+    "OtherBenefits": "Fully customizable corporate plan: IP/OP/emergency/ACU; Wellness programs; Executive check ups; Optional add-ons (dental, cancer, etc.)"
+  },
+  {
+    "Plan": "PRIMA Gold (Prepaid Card)",
+    "MBL_ABL": "ER only ₱20K",
+    "Room": "ER Only",
+    "CommonAcuteIllnesses": "Dengue, pneumonia, viral/bacterial infections, animal bites, injuries",
+    "NonDreadedPEC": "None",
+    "DreadedPEC": "None",
+    "OtherBenefits": "Unlimited PCC consults & labs; Dental mild prophylaxis via MetroDental; Life insurance (AD&D ₱50K); 24/7 TeleConsult; Single-use emergency only"
+  },
+  {
+    "Plan": "PRIMA Silver (Prepaid Card)",
+    "MBL_ABL": "ER only ₱20K",
+    "Room": "ER Only",
+    "CommonAcuteIllnesses": "Same acute illnesses",
+    "NonDreadedPEC": "None",
+    "DreadedPEC": "None",
+    "OtherBenefits": "Same as PRIMA Gold; Age limit up to 59 years"
+  },
+  {
+    "Plan": "PRIMA Consult (MaxiHealth)",
+    "MBL_ABL": "N/A",
+    "Room": "Clinic Only",
+    "CommonAcuteIllnesses": "Common acute conditions (consults, basic labs)",
+    "NonDreadedPEC": "None",
+    "DreadedPEC": "None",
+    "OtherBenefits": "Unlimited PCC consults; No emergency or inpatient coverage"
+  },
+  {
+    "Plan": "PRIMA Access (MaxiHealth)",
+    "MBL_ABL": "N/A",
+    "Room": "Clinic Only",
+    "CommonAcuteIllnesses": "Common acute/general illnesses via PCC labs/consults",
+    "NonDreadedPEC": "None",
+    "DreadedPEC": "None",
+    "OtherBenefits": "Unlimited consults & routine labs (Diagnostic Set A); No inpatient/emergency"
+  },
+  {
+    "Plan": "PRIMA Elite (MaxiHealth)",
+    "MBL_ABL": "N/A",
+    "Room": "Clinic Only",
+    "CommonAcuteIllnesses": "Acute/general illnesses via clinic visits & diagnostic tests",
+    "NonDreadedPEC": "None",
+    "DreadedPEC": "None",
+    "OtherBenefits": "Unlimited consults; Annual Physical Exam; Diagnostic Set A + 3 advanced tests; Some dental during APE"
+  },
+  {
+    "Plan": "Maxicare LifesavER",
+    "MBL_ABL": "₱25K ER (one-time use)",
+    "Room": "ER (Outpatient) Only",
+    "CommonAcuteIllnesses": "Accidents, dengue, pneumonia, viral infections",
+    "NonDreadedPEC": "Not covered",
+    "DreadedPEC": "Not covered",
+    "OtherBenefits": "Outpatient ER only; Life insurance (AD&D ₱50K); Covers accidents, dengue, pneumonia, viral infections; No inpatient or chronic coverage"
+  },
+  {
+    "Plan": "Maxicare LifesavER+",
+    "MBL_ABL": "₱50K ER + Confinement",
+    "Room": "ER + possible Confinement",
+    "CommonAcuteIllnesses": "Same acute illnesses",
+    "NonDreadedPEC": "Not covered",
+    "DreadedPEC": "Not covered",
+    "OtherBenefits": "Outpatient ER with possible confinement; Global emergency assistance via Assist America; Life AD&D ₱50K"
+  }
+]

@@ -3,8 +3,8 @@
     "Name": "Lourdes De Guzman",
     "Age": 67,
     "Gender": "Female",
-    "HMOProvider": "Intellicare",
-    "IntellicarePlan": "Executive Platinum (covers cancer follow-ups, diagnostics, chronic illness treatment, endocrinology, outpatient, inpatient)",
+    "HMOProvider": "Maxicare",
+    "IntellicarePlan": "Maxicare Platinum (with enhanced coverage for specialists, diagnostics, chronic care, and executive check-ups)",
     "PrimaryHospital": "Makati Medical Center",
     "PreferredLanguage": [ "Filipino" ]
   },

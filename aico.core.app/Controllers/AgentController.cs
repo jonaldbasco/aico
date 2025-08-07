@@ -1,21 +1,18 @@
-﻿using aico.core.app.Services;
+﻿using aico.core.app.Classes;
+using aico.core.app.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.SemanticKernel;
+using OpenAI;
+using System.ComponentModel.DataAnnotations;
 
 namespace aico.core.app.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AgentController : Controller
+    public class AgentController(Kernel kernel, JsonLoaderService jsonLoader) : Controller
     {
-        private readonly Kernel _kernel;
-        private readonly JsonLoaderService _jsonLoader;
-
-        public AgentController(Kernel kernel, JsonLoaderService jsonLoader)
-        {
-            _kernel = kernel;
-            _jsonLoader = jsonLoader;
-        }
+        private readonly Kernel _kernel = kernel;
+        private readonly JsonLoaderService _jsonLoader = jsonLoader;
 
         [HttpPost("healthSummarizer")]
         public async Task<IActionResult> Summarize(string fileName)
@@ -27,6 +24,9 @@ namespace aico.core.app.Controllers
             var plugin = _kernel.Plugins["HealthSummarizer"];
             string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "summary.skprompt.txt");
             string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            string maxicarePromptPath = Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json");
+            string promptMaxicare = System.IO.File.ReadAllText(maxicarePromptPath);
 
             // Configure the prompt template
             var promptConfig = new PromptTemplateConfig
@@ -55,7 +55,7 @@ namespace aico.core.app.Controllers
             });
 
             // Return the summary result
-            return Ok(result.GetValue<string>());
+            return JsonValidator.IsValidJson(content) ? Ok(result.GetValue<string>()) : BadRequest(new { error = result.ToString() });
         }
 
         [HttpPost("Diseases")]
@@ -99,5 +99,4 @@ namespace aico.core.app.Controllers
             return Ok(result.GetValue<string>());
         }
     }
-
 }

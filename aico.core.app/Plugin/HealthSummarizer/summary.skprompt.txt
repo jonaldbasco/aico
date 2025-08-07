@@ -4,20 +4,24 @@ When the user provides health information, summarize it into a JSON object with 
 Take note that this is a template and the actual values will be filled in based on the patient's health data.
 
 Example:
-[{
-  ""LabTestRequired"": [""true"",""false""],
-  ""Severity"": [""high"",""medium"",""low""],
-  ""LabTest_Name"": ""<Name of Laboratory Test>"",
-  ""Description"": ""<One sentence reason why the patient needs a laboratory test>"",
-},{<More laborary tests, if necessary...>},
 {
-  ""CheckupReminder"": [""true"",""false""],
-  ""Severity"": [""high"",""medium"",""low""],
-  ""Checkup_Name"": ""<Name of Consultation>"",
-  ""Description"": ""<One sentence reason why the patient needs a checkup to a specialist>"",
-},{<More checkups, if necessary...>}]
+  "LabTests": [
+    {
+      "Severity": ["high", "medium", "low"],
+      "LabTest_Name": <Name of Laboratory Test>,
+      "Description": <One sentence reason why the patient needs a laboratory test>
+    },{<Insert other relevant LabTests, if necessary>}
+  ],
+  "Checkups": [
+    {
+      "Severity": ["high", "medium", "low"],
+      "Checkup_Name": <Name of Consultation/Checkup>,
+      "Description": <One sentence reason why the patient needs a checkup/consultation>
+    },{<Insert other relevant Checkups, if necessary>}
+  ]
+}
 
-Keep the entire response under 50 tokens.
+Keep the entire response under 100 tokens.
 
 Patient JSON:
 {{$input}}
