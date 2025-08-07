@@ -98,5 +98,90 @@ namespace aico.core.app.Controllers
             // Return the summary result
             return Ok(result.GetValue<string>());
         }
+
+        [HttpPost("IsCovered")]
+        public async Task<IActionResult> IsCovered(string fileName)
+        {
+            // Load JSON content from the specified file
+            string content = _jsonLoader.LoadJsonInput(fileName);
+
+            // Retrieve the plugin and prompt file path
+            var plugin = _kernel.Plugins["HealthSummarizer"];
+            string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "covered.skprompt.txt");
+            string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            // Configure the prompt template
+            var promptConfig = new PromptTemplateConfig
+            {
+                Name = "IsCovered",
+                Description = "Acts as a medical assistant to assess if given diseases is covered.",
+                TemplateFormat = "semantic-kernel",
+                Template = promptText,
+                InputVariables = new List<InputVariable>
+                {
+                    new InputVariable
+                    {
+                        Name = "healthData",
+                        Description = "Raw health data provided by the user"
+                    }
+                }
+            };
+
+            // Create the summarizer function
+            var summarizerFunction = _kernel.CreateFunctionFromPrompt(promptConfig);
+
+            // Invoke the function with the loaded content
+            var result = await summarizerFunction.InvokeAsync(_kernel, new KernelArguments
+            {
+                ["input"] = content,
+                ["maxicareDetails"] = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json"))
+            });
+
+            // Return the summary result
+            return Ok(result.GetValue<string>());
+        }
+
+        [HttpPost("Procedure")]
+        public async Task<IActionResult> Procedure(string fileName, string chosenProcedure)
+        {
+            // Load JSON content from the specified file
+            string content = _jsonLoader.LoadJsonInput(fileName);
+
+            // Retrieve the plugin and prompt file path
+            var plugin = _kernel.Plugins["HealthSummarizer"];
+            string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "procedure.skprompt.txt");
+            string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            // Configure the prompt template
+            var promptConfig = new PromptTemplateConfig
+            {
+                Name = "IsCovered",
+                Description = "Act as a medical assistant in the Philippines that knows medical procedures.",
+                TemplateFormat = "semantic-kernel",
+                Template = promptText,
+                InputVariables = new List<InputVariable>
+                {
+                    new InputVariable
+                    {
+                        Name = "healthData",
+                        Description = "Raw health data provided by the user"
+                    }
+                }
+            };
+
+            // Create the summarizer function
+            var summarizerFunction = _kernel.CreateFunctionFromPrompt(promptConfig);
+
+            // Invoke the function with the loaded content
+            var result = await summarizerFunction.InvokeAsync(_kernel, new KernelArguments
+            {
+                ["input"] = content,
+                ["maxicareDetails"] = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json")),
+                ["procedure"] = chosenProcedure
+            });
+
+            // Return the summary result
+            return Ok(result.GetValue<string>());
+        }
     }
 }
