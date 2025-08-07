@@ -8,10 +8,7 @@ namespace aico.core.app.Controllers
     public class EmailController : ControllerBase
     {
         private readonly Kernel _kernel;
-        public EmailController(Kernel kernel)
-        {
-            _kernel = kernel;
-        }
+        public EmailController(Kernel kernel) { _kernel = kernel; }
 
         [HttpPost("send-email")]
         public async Task<IActionResult> SendEmail([FromQuery] string to, [FromQuery] string subject, [FromQuery] string body)

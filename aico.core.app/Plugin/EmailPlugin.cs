@@ -8,18 +8,6 @@ using System.Text;
 
 namespace aico.core.app.Plugin
 {
-    //public class EmailPlugin
-    //{
-    //    [KernelFunction, Description("Sends a test email to a given recipient.")]
-    //    public string SendTestEmail(
-    //        [Description("Recipient's email address")] string to,
-    //        [Description("Subject of the email")] string subject,
-    //        [Description("Body of the email")] string body)
-    //    {
-    //        // Simulate sending email
-    //        return $"Email sent to {to} with subject '{subject}' and body '{body}'";
-    //    }
-    //}
     public class EmailPlugin
     {
         private readonly EmailSettings _settings;
@@ -40,16 +28,7 @@ namespace aico.core.app.Plugin
             };
 
             var mailMessage = new MailMessage(_settings.Username, to, subject, body);
-
-            //try
-            //{
-            //    await smtpClient.SendMailAsync(mailMessage);
-            //    return $"✅ Email successfully sent to {to}";
-            //}
-            //catch (Exception ex)
-            //{
-            //    return $"❌ Failed to send email: {ex.Message}";
-            //}
+       
             try
             {
                 await smtpClient.SendMailAsync(mailMessage);

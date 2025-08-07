@@ -1,7 +1,7 @@
 ﻿using aico.core.app.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System.ComponentModel;
+using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -64,9 +64,9 @@ namespace aico.core.app.Controllers
         }
 
         [HttpPost("ParsingAgent")]
-        public async Task<IActionResult> ParsingAgent([FromBody] String fileName)
+        public async Task<IActionResult> ParsingAgent([FromQuery] string fileName)
         {
-            string filePath = @"C:\Users\User\source\repos\jonaldbasco\aico\aico.core.app\Scripts\"+fileName+".json";
+            string filePath = @"C:\Users\User\source\repos\jonaldbasco\aico\aico.core.app\Scripts\" + fileName + ".json";
             string rawJson = System.IO.File.ReadAllText(filePath);
 
             //var healthData = JsonSerializer.Deserialize<dynamic>(rawJson);
@@ -76,7 +76,7 @@ namespace aico.core.app.Controllers
                 model = _config.Model,
                 messages = new[]
                 {
-                    new { role = "system", content = "You are AICo, a warm and clear medical assistant. When the user provides health info, translate results into simple guidance. Mention lifestyle tips and next action steps. At max, return 1,500 characters." },
+                    new { role = "system", content = "You are AICo, a warm and clear medical assistant. When the user provides health info, translate results into simple guidance. Mention lifestyle tips and next action steps. At max, return 1,000 characters." },
                     new { role = "user", content = rawJson } // or summarize key portions before sending
                 }
             };
@@ -97,7 +97,56 @@ namespace aico.core.app.Controllers
 
             var result = await response.Content.ReadAsStringAsync();
             //return Content(result, "application/json");
-            return Content(result);
+
+            // Accessing content from the JSON structure
+            var jsonObject = JObject.Parse(result);
+
+            // Navigate to the content inside choices[0].message.content
+            string? final = jsonObject["choices"]?[0]?["message"]?["content"]?.ToString();
+
+            return string.IsNullOrEmpty(final) ? BadRequest("No content found in response.") : Ok(final);
+        }
+
+        [HttpPost("ProviderContractAgent")]
+        public async Task<IActionResult> ProviderContractAgent([FromQuery] string fileName)
+        {
+            string filePath = @"C:\Users\User\source\repos\jonaldbasco\aico\aico.core.app\Scripts\" + fileName + ".json";
+            string rawJson = System.IO.File.ReadAllText(filePath);
+
+            var userPrompt = new
+            {
+                model = _config.Model,
+                messages = new[]
+                {
+                    new { role = "system", content = "You are AICo, a warm and clear medical assistant. When the user provides health info, translate results into simple guidance. Mention lifestyle tips and next action steps. At max, return 1,000 characters." },
+                    new { role = "user", content = rawJson } // or summarize key portions before sending
+                }
+            };
+
+            var jsonContent = new StringContent(
+                JsonSerializer.Serialize(userPrompt, _jsonOptions),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var response = await _httpClient.PostAsync("https://api.openai.com/v1/chat/completions", jsonContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                return StatusCode((int)response.StatusCode, error);
+            }
+
+            var result = await response.Content.ReadAsStringAsync();
+            //return Content(result, "application/json");
+
+            // Accessing content from the JSON structure
+            var jsonObject = JObject.Parse(result);
+
+            // Navigate to the content inside choices[0].message.content
+            string? final = jsonObject["choices"]?[0]?["message"]?["content"]?.ToString();
+
+            return string.IsNullOrEmpty(final) ? BadRequest("No content found in response.") : Ok(final);
         }
     }
 

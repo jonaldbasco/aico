@@ -2,6 +2,7 @@ using aico.core.app.Classes;
 using aico.core.app.Controllers;
 using aico.core.app.Models;
 using aico.core.app.Plugin; // <- EmailPlugin is in this namespace
+using aico.core.app.Services;
 using aico.core.app.Sources;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -40,20 +41,28 @@ builder.Services.AddHttpClient<OpenAIController>((sp, client) =>
 // -----------------------------
 // 2. Semantic Kernel & EmailPlugin Setup
 // -----------------------------
+builder.Services.AddScoped<JsonLoaderService>();
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
 builder.Services.AddSingleton<EmailPlugin>();
 
 // Register Semantic Kernel
 builder.Services.AddSingleton<Kernel>(sp =>
 {
+    var config = sp.GetRequiredService<IOptions<OpenAIConfig>>().Value;
     var emailPlugin = sp.GetRequiredService<EmailPlugin>();
 
     var builder = Kernel.CreateBuilder();
 
     // Import plugins BEFORE building the kernel
+    builder.AddOpenAIChatCompletion(
+        modelId: config.Model,
+        apiKey: config.ApiKey
+    );
+    builder.Plugins.AddFromPromptDirectory("Plugin", "HealthSummarizer");
     builder.Plugins.AddFromObject(emailPlugin, "email");
 
     var kernel = builder.Build();
+
 
     return kernel;
 });
