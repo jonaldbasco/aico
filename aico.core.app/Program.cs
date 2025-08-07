@@ -58,8 +58,8 @@ builder.Services.AddSingleton<Kernel>(sp =>
         modelId: config.Model,
         apiKey: config.ApiKey
     );
-    builder.Plugins.AddFromPromptDirectory("Plugin", "HealthSummarizer");
-    builder.Plugins.AddFromObject(emailPlugin, "email");
+    builder.Plugins.AddFromPromptDirectory("Plugin", "HealthSummarizer"); // Health Summary Plugin
+    builder.Plugins.AddFromObject(emailPlugin, "email"); // Email Plugin
 
     var kernel = builder.Build();
 
