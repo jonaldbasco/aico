@@ -4,6 +4,7 @@ using aico.core.app.Sources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.SemanticKernel;
+using System.ComponentModel;
 
 namespace aico.core.app.Controllers
 {
@@ -15,80 +16,7 @@ namespace aico.core.app.Controllers
         private readonly JsonLoaderService _jsonLoader = jsonLoader;
         private readonly AicoDBContext _context = context;
 
-        [HttpPost("healthSummarizer")]
-        public async Task<IActionResult> Summarize(string fileName)
-        {
-            // Load JSON content from the specified file
-            string content = _jsonLoader.LoadJsonInput(fileName);
-
-            // Retrieve the plugin and prompt file path
-            var plugin = _kernel.Plugins["HealthSummarizer"];
-            string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "summary.skprompt.txt");
-            string promptText = System.IO.File.ReadAllText(promptFilePath);
-
-            string maxicarePromptPath = Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json");
-            string promptMaxicare = System.IO.File.ReadAllText(maxicarePromptPath);
-
-            var existingUser = await _context.BasicProfileClass
-                .FirstOrDefaultAsync(u => u.FileName == fileName);
-
-            if (existingUser == null)
-            {
-                return Conflict("User not exist. Use BasicProfile() first");
-            }
-
-            // Configure the prompt template
-            var promptConfig = new PromptTemplateConfig
-            {
-                Name = "HealthSummarizer",
-                Description = "Acts as a medical assistant to summarize health data with lifestyle tips and next steps.",
-                TemplateFormat = "semantic-kernel",
-                Template = promptText,
-                InputVariables = new List<InputVariable>
-                {
-                    new InputVariable
-                    {
-                        Name = "healthData",
-                        Description = "Raw health data provided by the user"
-                    }
-                }
-            };
-
-            // Create the summarizer function
-            var summarizerFunction = _kernel.CreateFunctionFromPrompt(promptConfig);
-
-            // Invoke the function with the loaded content
-            var result = await summarizerFunction.InvokeAsync(_kernel, new KernelArguments
-            {
-                ["input"] = content
-            });
-
-            // Transform the result to JSON format
-            var parsedJson = AicoFinalJSONResult.Parse(result.GetValue<string>()!);
-
-            try
-            {
-                // Save the summary to the database
-                _context.Add(new HealthSummaryClass
-                {
-                    Id = CreateGUID.Generate(),
-                    FileName = fileName,
-                    Summary = parsedJson.ToString()!,
-                    CreatedAt = DateTime.UtcNow
-                });
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                // Log and handle error
-                return StatusCode(500, ex.Message);
-            }
-
-            // Return the summary result
-            return Ok(parsedJson);
-        }
-
-        [HttpPost("getBasicProfile")]
+        [HttpPost("getBasicProfile"), Description("Gets BasicProfile from preloaded data")]
         public async Task<IActionResult> BasicProfile(string fileName)
         {
             // Load JSON content from the specified file
@@ -158,7 +86,81 @@ namespace aico.core.app.Controllers
             return Ok(parsedJson);
         }
 
-        [HttpPost("Diseases")]
+        [HttpPost("healthSummarizer"), Description("Gets LabTests, Consults, and Possible Procedures")]
+        public async Task<IActionResult> Summarize(string fileName)
+        {
+            // Load JSON content from the specified file
+            string content = _jsonLoader.LoadJsonInput(fileName);
+
+            // Retrieve the plugin and prompt file path
+            var plugin = _kernel.Plugins["HealthSummarizer"];
+            string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "summary.skprompt.txt");
+            string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            string maxicarePromptPath = Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json");
+            string promptMaxicare = System.IO.File.ReadAllText(maxicarePromptPath);
+
+            var existingUser = await _context.BasicProfileClass
+                .OrderByDescending(u => u.CreatedAt)
+                .FirstOrDefaultAsync(u => u.FileName == fileName);
+
+            if (existingUser == null)
+            {
+                return Conflict("User not exist. Use BasicProfile() first");
+            }
+
+            // Configure the prompt template
+            var promptConfig = new PromptTemplateConfig
+            {
+                Name = "HealthSummarizer",
+                Description = "Acts as a medical assistant to summarize health data with lifestyle tips and next steps.",
+                TemplateFormat = "semantic-kernel",
+                Template = promptText,
+                InputVariables = new List<InputVariable>
+                {
+                    new InputVariable
+                    {
+                        Name = "healthData",
+                        Description = "Raw health data provided by the user"
+                    }
+                }
+            };
+
+            // Create the summarizer function
+            var summarizerFunction = _kernel.CreateFunctionFromPrompt(promptConfig);
+
+            // Invoke the function with the loaded content
+            var result = await summarizerFunction.InvokeAsync(_kernel, new KernelArguments
+            {
+                ["input"] = content
+            });
+
+            // Transform the result to JSON format
+            var parsedJson = AicoFinalJSONResult.Parse(result.GetValue<string>()!);
+
+            try
+            {
+                // Save the summary to the database
+                _context.Add(new HealthSummaryClass
+                {
+                    Id = CreateGUID.Generate(),
+                    FileName = fileName,
+                    Summary = parsedJson.ToString()!,
+                    CreatedAt = DateTime.UtcNow
+                });
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log and handle error
+                return StatusCode(500, ex.Message);
+            }
+
+            // Return the summary result
+            return Ok(parsedJson);
+        }
+
+        [HttpPost("Diseases"), Description("Gets healthSummary, Returns Diseases")]
         public async Task<IActionResult> Diseases(string fileName)
         {
             // Load JSON content from the specified file
@@ -168,6 +170,23 @@ namespace aico.core.app.Controllers
             var plugin = _kernel.Plugins["HealthSummarizer"];
             string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "diseases.skprompt.txt");
             string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            BasicProfileClass? existingUser = await _context.BasicProfileClass
+                .OrderByDescending(u => u.CreatedAt)
+                .FirstOrDefaultAsync(u => u.FileName == fileName);
+
+            HealthSummaryClass? existinghealthSummary = await _context.HealthSummaryClass
+                .OrderByDescending(u => u.CreatedAt)
+                .FirstOrDefaultAsync(u => u.FileName == fileName);
+
+            if (existingUser == null)
+            {
+                return Conflict("User not exist. Use BasicProfile() first");
+            }
+            else if (existinghealthSummary == null)
+            {
+                return Conflict("Health Summary not exist. Use HealthSummarizer() first");
+            }
 
             // Configure the prompt template
             var promptConfig = new PromptTemplateConfig
@@ -221,16 +240,33 @@ namespace aico.core.app.Controllers
 
         }
 
-        [HttpPost("IsCovered")]
+        [HttpPost("IsCovered"), Description("Gets healthSummary, Returns a list of covered and not covered costs")]
         public async Task<IActionResult> IsCovered(string fileName)
         {
             // Load JSON content from the specified file
-            string content = _jsonLoader.LoadJsonInput(fileName);
+            //string content = _jsonLoader.LoadJsonInput(fileName);
 
-            // Retrieve the plugin and prompt file path
+            //// Retrieve the plugin and prompt file path
             var plugin = _kernel.Plugins["HealthSummarizer"];
             string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "covered.skprompt.txt");
             string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            BasicProfileClass? existingUser = await _context.BasicProfileClass
+                .OrderByDescending(u => u.CreatedAt)
+                .FirstOrDefaultAsync(u => u.FileName == fileName);
+
+            HealthSummaryClass? existinghealthSummary = await _context.HealthSummaryClass
+                .OrderByDescending(u => u.CreatedAt)
+                .FirstOrDefaultAsync(u => u.FileName == fileName);
+
+            if (existingUser == null)
+            {
+                return Conflict("User not exist. Use BasicProfile() first");
+            }
+            else if (existinghealthSummary == null)
+            {
+                return Conflict("Health Summary not exist. Use HealthSummarizer() first");
+            }
 
             // Configure the prompt template
             var promptConfig = new PromptTemplateConfig
@@ -255,7 +291,8 @@ namespace aico.core.app.Controllers
             // Invoke the function with the loaded content
             var result = await summarizerFunction.InvokeAsync(_kernel, new KernelArguments
             {
-                ["input"] = content,
+                ["basicProfile"] = existingUser.Summary,
+                ["healthSummary"] = existinghealthSummary.Summary,
                 ["maxicare"] = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json"))
             });
 
@@ -284,16 +321,33 @@ namespace aico.core.app.Controllers
             return Ok(parsedJson);
         }
 
-        [HttpPost("Procedure")]
+        [HttpPost("Procedure"), Description("Gets basicProfile, healthSummary, and chosen procedure, Returns isCovered and recommends best hospital who can perform that procedure")]
         public async Task<IActionResult> Procedure(string fileName, string chosenProcedure)
         {
             // Load JSON content from the specified file
-            string content = _jsonLoader.LoadJsonInput(fileName);
+            //string content = _jsonLoader.LoadJsonInput(fileName);
 
             // Retrieve the plugin and prompt file path
             var plugin = _kernel.Plugins["HealthSummarizer"];
             string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "procedure.skprompt.txt");
             string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            BasicProfileClass? existingUser = await _context.BasicProfileClass
+                .OrderByDescending(u => u.CreatedAt)
+                .FirstOrDefaultAsync(u => u.FileName == fileName);
+
+            HealthSummaryClass? existinghealthSummary = await _context.HealthSummaryClass
+                .OrderByDescending(u => u.CreatedAt)
+                .FirstOrDefaultAsync(u => u.FileName == fileName);
+
+            if (existingUser == null)
+            {
+                return Conflict("User not exist. Use BasicProfile() first");
+            }
+            else if (existinghealthSummary == null)
+            {
+                return Conflict("Health Summary not exist. Use HealthSummarizer() first");
+            }
 
             // Configure the prompt template
             var promptConfig = new PromptTemplateConfig
@@ -318,7 +372,7 @@ namespace aico.core.app.Controllers
             // Invoke the function with the loaded content
             var result = await summarizerFunction.InvokeAsync(_kernel, new KernelArguments
             {
-                ["input"] = content,
+                ["existingUser"] = existingUser.Summary,
                 ["maxicare"] = System.IO.File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json")),
                 ["procedure"] = chosenProcedure
             });
@@ -348,11 +402,11 @@ namespace aico.core.app.Controllers
             return Ok(parsedJson);
         }
 
-        [HttpPost("Cost")]
+        [HttpPost("Cost"), Description("Gets basicProfile and healthSummary, Returns Total Out of pocket costs, if any")]
         public async Task<IActionResult> Cost(string fileName)
         {
             // Load JSON content from the specified file
-            string content = _jsonLoader.LoadJsonInput(fileName);
+            //string content = _jsonLoader.LoadJsonInput(fileName);
 
             // Retrieve the plugin and prompt file path
             var plugin = _kernel.Plugins["HealthSummarizer"];
