@@ -11,9 +11,9 @@ namespace aico.core.app.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
-        private readonly aicoDBContext _aicoDBContext;
+        private readonly AicoDBContext _aicoDBContext;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, aicoDBContext aicoDBContext)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, AicoDBContext aicoDBContext)
         {
             _logger = logger;
             _configuration = configuration;

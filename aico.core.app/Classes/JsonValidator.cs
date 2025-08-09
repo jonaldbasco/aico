@@ -20,4 +20,17 @@ namespace aico.core.app.Classes
             }
         }
     }
+
+    public class AicoFinalJSONResult
+    {
+        public static object Parse(string rawOutput)
+        {
+            var trimmedOutput = rawOutput
+                .Replace("```json", "")
+                .Replace("```", "")
+                .Trim();
+
+            return JsonSerializer.Deserialize<object>(trimmedOutput)!;
+        }
+    }
 }

@@ -3,8 +3,8 @@ When the user provides his/her ordered procedure, recommend the best hospital ba
 
 Take note that this is a template and the actual values will be filled in based on the patient's health data.
 
-[
-	{
+Example:
+{
 	"maxicarePlanType": <Plan Type>,
 	"hospitalName": <Name of Hospital>,
 	"hospitalLocation": <Location of Hospital>,
@@ -15,10 +15,9 @@ Take note that this is a template and the actual values will be filled in based 
 	"treatmentCost": <Price of procedure>,
 	"coveredByMaxicare": <Amount in peso that Maxicare can cover>,
 	"outOfPocket": <Amount in peso if the patient needs to pay out of pocket>
-	}
-]
+}
 
-Keep the entire response under 100 tokens.
+Keep the entire response under 150 tokens.
 
 Patient Procedure:
 {{$procedure}}
@@ -29,4 +28,4 @@ Patient JSON:
 Maxicare Plan JSON:
 {{$maxicare}}
 
-Respond with JSON only:
+Explicitly respond in JSON format.

@@ -18,7 +18,7 @@ Take note that this is a template and the actual values will be filled in based 
 	}
 ]
 
-Keep the entire response under 50 tokens.
+Keep the entire response under 100 tokens.
 
 Diseases JSON:
 {{$input}}
@@ -26,4 +26,4 @@ Diseases JSON:
 Maxicare Plan JSON:
 {{$maxicare}}
 
-Respond with JSON only:
+Explicitly respond in JSON format.

@@ -5,8 +5,10 @@ using aico.core.app.Plugin;
 using aico.core.app.Services;
 using aico.core.app.Sources;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.SemanticKernel;
+using System;
 using System.Net.Http.Headers;
 
 
@@ -25,9 +27,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
 
-var aicoConnectionString = builder.Configuration.GetConnectionString("aicoConnectionString");
-builder.Services.AddDbContext<aicoDBContext>(options =>
-    options.UseSqlServer(aicoConnectionString));
+var connectionString = builder.Configuration.GetConnectionString("DatabaseConnection");
+builder.Services.AddDbContext<AicoDBContext>(options =>
+    options.UseSqlite(connectionString));
 
 builder.Services.Configure<OpenAIConfig>(builder.Configuration.GetSection("OpenAI"));
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("Email"));
@@ -70,6 +72,14 @@ builder.Services.AddSingleton<Kernel>(sp =>
 // 4. Build App
 // -----------------------------
 var app = builder.Build();
+
+// This will create the DB if it doesn't exist
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AicoDBContext>();
+    db.Database.EnsureCreated();
+    Console.WriteLine("SQLite Database created.");
+}
 
 // -----------------------------
 // 5. Configure Middleware

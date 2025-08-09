@@ -1,18 +1,19 @@
 ﻿using aico.core.app.Classes;
 using aico.core.app.Services;
+using aico.core.app.Sources;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.SemanticKernel;
-using OpenAI;
-using System.ComponentModel.DataAnnotations;
 
 namespace aico.core.app.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AgentController(Kernel kernel, JsonLoaderService jsonLoader) : Controller
+    public class AgentController(Kernel kernel, JsonLoaderService jsonLoader, AicoDBContext context) : Controller
     {
         private readonly Kernel _kernel = kernel;
         private readonly JsonLoaderService _jsonLoader = jsonLoader;
+        private readonly AicoDBContext _context = context;
 
         [HttpPost("healthSummarizer")]
         public async Task<IActionResult> Summarize(string fileName)
@@ -27,6 +28,9 @@ namespace aico.core.app.Controllers
 
             string maxicarePromptPath = Path.Combine(Directory.GetCurrentDirectory(), "Scripts", "maxicare_details.json");
             string promptMaxicare = System.IO.File.ReadAllText(maxicarePromptPath);
+
+            Guid newGuid = Guid.NewGuid();
+            string guidString = newGuid.ToString();
 
             // Configure the prompt template
             var promptConfig = new PromptTemplateConfig
@@ -54,8 +58,29 @@ namespace aico.core.app.Controllers
                 ["input"] = content
             });
 
+            // Transform the result to JSON format
+            var parsedJson = AicoFinalJSONResult.Parse(result.GetValue<string>()!);
+
+            try
+            {
+                // Save the summary to the database
+                _context.Add(new HealthSummaryClass
+                {
+                    Id = guidString,
+                    FileName = fileName,
+                    Summary = parsedJson.ToString()!,
+                    CreatedAt = DateTime.UtcNow
+                });
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log and handle error
+                return StatusCode(500, ex.Message);
+            }
+
             // Return the summary result
-            return JsonValidator.IsValidJson(content) ? Ok(result.GetValue<string>()) : BadRequest(new { error = result.ToString() });
+            return Ok(parsedJson);
         }
 
         [HttpPost("Diseases")]
@@ -68,6 +93,9 @@ namespace aico.core.app.Controllers
             var plugin = _kernel.Plugins["HealthSummarizer"];
             string promptFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Plugin", "HealthSummarizer", "diseases.skprompt.txt");
             string promptText = System.IO.File.ReadAllText(promptFilePath);
+
+            Guid newGuid = Guid.NewGuid();
+            string guidString = newGuid.ToString();
 
             // Configure the prompt template
             var promptConfig = new PromptTemplateConfig
@@ -95,8 +123,30 @@ namespace aico.core.app.Controllers
                 ["input"] = content
             });
 
+            // Transform the result to JSON format
+            var parsedJson = AicoFinalJSONResult.Parse(result.GetValue<string>()!);
+
+            try
+            {
+                // Save the summary to the database
+                _context.Add(new DiseasesClass
+                {
+                    Id = guidString,
+                    FileName = fileName,
+                    Summary = parsedJson.ToString()!,
+                    CreatedAt = DateTime.UtcNow
+                });
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Log and handle error
+                return StatusCode(500, ex.Message);
+            }
+
             // Return the summary result
-            return Ok(result.GetValue<string>());
+            return Ok(parsedJson);
+
         }
 
         [HttpPost("IsCovered")]
@@ -138,7 +188,8 @@ namespace aico.core.app.Controllers
             });
 
             // Return the summary result
-            return Ok(result.GetValue<string>());
+            var parsedJson = AicoFinalJSONResult.Parse(result.GetValue<string>()!);
+            return Ok(parsedJson);
         }
 
         [HttpPost("Procedure")]
@@ -181,7 +232,8 @@ namespace aico.core.app.Controllers
             });
 
             // Return the summary result
-            return Ok(result.GetValue<string>());
+            var parsedJson = AicoFinalJSONResult.Parse(result.GetValue<string>()!);
+            return Ok(parsedJson);
         }
     }
 }

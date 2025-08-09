@@ -8,9 +8,9 @@ Example:
   "Diseases": ["Disease1","Disease2", "Disease3", <Insert more diseases, if any>],
 }
 
-Keep the entire response under 50 tokens.
+Keep the entire response under 100 tokens.
 
 Patient JSON:
 {{$input}}
 
-Respond with JSON only:
+Explicitly respond in JSON format.

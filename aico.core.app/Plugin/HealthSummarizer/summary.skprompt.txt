@@ -26,4 +26,4 @@ Keep the entire response under 100 tokens.
 Patient JSON:
 {{$input}}
 
-Respond with JSON only:
+Explicitly respond in JSON format.
