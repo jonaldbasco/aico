@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using aico.core.app.Sources;
 
@@ -10,9 +11,11 @@ using aico.core.app.Sources;
 namespace aico.core.app.Migrations
 {
     [DbContext(typeof(AicoDBContext))]
-    partial class AicoDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250809032605_CostClass")]
+    partial class CostClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.8");

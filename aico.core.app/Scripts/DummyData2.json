@@ -1,12 +1,27 @@
 {
   "BasicProfile": {
-    "Name": "Maria Isabel Santos",
-    "Age": 58,
+    "Name": "Lourdes Ramirez",
+    "Age": 68,
     "Gender": "Female",
+    "DateOfBirth": "1957-11-22",
+    "ContactNumber": "+63 927 456 7890",
+    "Email": "lourdes.ramirez@email.com",
+    "Address": {
+      "Street": "456 Mabini Ave.",
+      "City": "Cebu City",
+      "Province": "Cebu",
+      "PostalCode": "6000"
+    },
+    "MaritalStatus": "Widowed",
+    "BloodType": "A+",
+    "EmergencyContact": {
+      "Name": "Carlos Ramirez",
+      "Relationship": "Son",
+      "ContactNumber": "+63 917 888 1122"
+    },
     "HMOProvider": "Maxicare",
     "MaxicareTier": "Maxicare Platinum (with enhanced coverage for specialists, diagnostics, chronic care, and executive check-ups)",
-    "PrimaryHospital": "Cardinal Santos Medical Center",
-    "PreferredLanguage": [ "Filipino", "English" ]
+    "HMONumber": "MXC-9876543210"
   },
   "MedicalHistory": {
     "Conditions": [
@@ -31,7 +46,10 @@
       "QuitYear": 2015
     },
     "FamilyHistory": {
-      "Conditions": [ "Thyroid disorders", "Asthma" ]
+      "Conditions": [
+        "Thyroid disorders",
+        "Asthma"
+      ]
     },
     "Allergy": "Sulfa drugs"
   },

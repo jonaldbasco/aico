@@ -1,5 +1,4 @@
-﻿using aico.core.app.Classes;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace aico.core.app.Controllers
 {

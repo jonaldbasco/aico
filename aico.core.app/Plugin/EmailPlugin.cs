@@ -1,4 +1,4 @@
-﻿using aico.core.app.Classes;
+﻿using aico.core.app.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.SemanticKernel;
 using System.ComponentModel;

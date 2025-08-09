@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using aico.core.app.Sources;
 
@@ -10,9 +11,11 @@ using aico.core.app.Sources;
 namespace aico.core.app.Migrations
 {
     [DbContext(typeof(AicoDBContext))]
-    partial class AicoDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250809030312_HealthSummaryClass")]
+    partial class HealthSummaryClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
@@ -36,27 +39,6 @@ namespace aico.core.app.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BasicProfileClass");
-                });
-
-            modelBuilder.Entity("aico.core.app.Models.CostClass", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Summary")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CostClass");
                 });
 
             modelBuilder.Entity("aico.core.app.Models.DiseasesClass", b =>

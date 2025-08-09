@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace aico.core.app.Migrations
 {
     /// <inheritdoc />
-    public partial class HealthSummaryClass : Migration
+    public partial class CostClass : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DiseasesClass",
+                name: "CostClass",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
@@ -22,21 +22,7 @@ namespace aico.core.app.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DiseasesClass", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HealthSummaryClass",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    FileName = table.Column<string>(type: "TEXT", nullable: false),
-                    Summary = table.Column<string>(type: "TEXT", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HealthSummaryClass", x => x.Id);
+                    table.PrimaryKey("PK_CostClass", x => x.Id);
                 });
         }
 
@@ -44,10 +30,7 @@ namespace aico.core.app.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DiseasesClass");
-
-            migrationBuilder.DropTable(
-                name: "HealthSummaryClass");
+                name: "CostClass");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace aico.core.app.Classes
+namespace aico.core.app.Models
 {
     public static class JsonValidator
     {
@@ -31,6 +31,14 @@ namespace aico.core.app.Classes
                 .Trim();
 
             return JsonSerializer.Deserialize<object>(trimmedOutput)!;
+        }
+    }
+
+    public class CreateGUID()
+    {
+        public static string Generate()
+        {
+            return Guid.NewGuid().ToString();
         }
     }
 }

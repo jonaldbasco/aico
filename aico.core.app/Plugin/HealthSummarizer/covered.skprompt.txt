@@ -18,7 +18,7 @@ Take note that this is a template and the actual values will be filled in based 
 	}
 ]
 
-Keep the entire response under 100 tokens.
+Keep the entire response under 150 tokens.
 
 Diseases JSON:
 {{$input}}

@@ -2,7 +2,7 @@
 using Microsoft.SemanticKernel;
 using System.ComponentModel.DataAnnotations;
 
-namespace aico.core.app.Classes
+namespace aico.core.app.Models
 {
     public class HealthSummaryClass
     {

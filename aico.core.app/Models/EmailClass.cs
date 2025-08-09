@@ -1,4 +1,4 @@
-﻿namespace aico.core.app.Classes
+﻿namespace aico.core.app.Models
 {
     public class EmailSettings
     {

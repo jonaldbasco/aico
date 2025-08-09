@@ -7,7 +7,7 @@ using OpenAI.Responses;
 using System;
 using System.ComponentModel;
 
-namespace aico.core.app.Classes
+namespace aico.core.app.Models
 {
     //public class SemanticKernelClass
     //{

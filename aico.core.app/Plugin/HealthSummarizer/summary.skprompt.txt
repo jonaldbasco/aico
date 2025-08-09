@@ -21,7 +21,7 @@ Example:
   ]
 }
 
-Keep the entire response under 100 tokens.
+Keep the entire response under 300 tokens.
 
 Patient JSON:
 {{$input}}

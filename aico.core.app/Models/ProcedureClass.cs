@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace aico.core.app.Classes
+namespace aico.core.app.Models
 {
-    public class DiseasesClass
+    public class ProcedureClass
     {
         [Key]
         public required string Id { get; set; }

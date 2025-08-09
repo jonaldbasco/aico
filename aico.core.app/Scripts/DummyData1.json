@@ -3,10 +3,25 @@
     "Name": "Juan Dela Cruz",
     "Age": 45,
     "Gender": "Male",
+    "DateOfBirth": "1980-03-15",
+    "ContactNumber": "+63 917 123 4567",
+    "Email": "juan.delacruz@email.com",
+    "Address": {
+      "Street": "123 Sampaguita St.",
+      "City": "Quezon City",
+      "Province": "Metro Manila",
+      "PostalCode": "1100"
+    },
+    "MaritalStatus": "Married",
+    "BloodType": "O+",
+    "EmergencyContact": {
+      "Name": "Maria Dela Cruz",
+      "Relationship": "Spouse",
+      "ContactNumber": "+63 917 765 4321"
+    },
     "HMOProvider": "Maxicare",
     "MaxicareTier": "Prima Gold (with inpatient/outpatient + annual physical exam + diagnostics)",
-    "PrimaryHospital": "Makati Medical Center",
-    "PreferredLanguage": [ "Filipino", "English" ]
+    "HMONumber": "MXC-1234567890"
   },
   "MedicalHistory": {
     "Conditions": [
@@ -22,7 +37,10 @@
       }
     ],
     "FamilyHistory": {
-      "Conditions": [ "Heart disease", "Kidney disease" ],
+      "Conditions": [
+        "Heart disease",
+        "Kidney disease"
+      ],
       "Side": "Maternal"
     },
     "SmokingHistory": {
