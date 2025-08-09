@@ -28,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=AIRecommend}/{action=Index}/{id?}");
+    pattern: "{controller=Cost}/{action=Index}/{id?}");
 
 app.Run();

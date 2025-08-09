@@ -2,14 +2,9 @@
 
 namespace aico.core.app.Controllers
 {
-    public class AIRecommendController : Controller
+    public class CostController : Controller
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Result()
         {
             return View();
         }
