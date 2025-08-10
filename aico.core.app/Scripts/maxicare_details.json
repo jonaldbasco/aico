@@ -1,0 +1,1146 @@
+[
+  {
+    "Plan": "MyMaxicare Platinum Plus",
+    "Consultations": {
+      "Outpatient": "Unlimited",
+      "Inpatient": "Unlimited",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Others within MBL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Scoliosis consults",
+        "Congenital illness consults",
+        "TUIP"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "MBL",
+      "Amount": 250000
+    },
+    "Accommodation": {
+      "RoomType": "Large Private Room",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": {
+        "Year1": "10% of MBL",
+        "Year2Plus": "Full coverage"
+      }
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "10% of MBL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "Physical Exam"
+      ],
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "InternationalAssist": true,
+      "SpecialConsults": [
+        "Scoliosis",
+        "Congenital illnesses"
+      ],
+      "TUIP": true
+    }
+  },
+  {
+    "Plan": "MyMaxicare Platinum",
+    "Consultations": {
+      "Outpatient": "Unlimited",
+      "Inpatient": "Unlimited",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Others within MBL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Scoliosis consults",
+        "Congenital illness consults",
+        "TUIP"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "MBL",
+      "Amount": 200000
+    },
+    "Accommodation": {
+      "RoomType": "Regular Private Room",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": {
+        "Year1": "10% of MBL",
+        "Year2Plus": "Full coverage"
+      }
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "10% of MBL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "Physical Exam"
+      ],
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "InternationalAssist": true,
+      "SpecialConsults": [
+        "Scoliosis",
+        "Congenital illnesses"
+      ],
+      "TUIP": true
+    }
+  },
+  {
+    "Plan": "MyMaxicare Gold",
+    "Consultations": {
+      "Outpatient": "Unlimited",
+      "Inpatient": "Unlimited",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Others within MBL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Scoliosis consults",
+        "Congenital illness consults",
+        "TUIP"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "MBL",
+      "Amount": 150000
+    },
+    "Accommodation": {
+      "RoomType": "Regular Private Room",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": {
+        "Year1": "10% of MBL",
+        "Year2Plus": "Full coverage"
+      }
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "10% of MBL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "Physical Exam"
+      ],
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "InternationalAssist": true,
+      "SpecialConsults": [
+        "Scoliosis",
+        "Congenital illnesses"
+      ],
+      "TUIP": true
+    }
+  },
+  {
+    "Plan": "MyMaxicare Silver",
+    "Consultations": {
+      "Outpatient": "Unlimited",
+      "Inpatient": "Unlimited",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Others within MBL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Scoliosis consults",
+        "Congenital illness consults",
+        "TUIP"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "MBL",
+      "Amount": 100000
+    },
+    "Accommodation": {
+      "RoomType": "Semi‑Private Room",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": {
+        "Year1": "10% of MBL",
+        "Year2Plus": "Full coverage"
+      }
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "10% of MBL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "Physical Exam"
+      ],
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "InternationalAssist": true,
+      "SpecialConsults": [
+        "Scoliosis",
+        "Congenital illnesses"
+      ],
+      "TUIP": true
+    }
+  },
+  {
+    "Plan": "Maxicare Starter Plan (SME)",
+    "Consultations": {
+      "Outpatient": "Tiered",
+      "Inpatient": "Tiered",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "Basic labs within tiered MBL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": []
+    },
+    "CoverageLimit": {
+      "Type": "MBL",
+      "Amount": "₱60K–₱230K (tiered)"
+    },
+    "Accommodation": {
+      "RoomType": "Small Suite to Semi‑Private",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": {
+        "Year1": "10% of MBL",
+        "Year2Plus": "Full coverage (possible)"
+      }
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "10% of MBL (tiered)"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": true,
+      "Dental": true,
+      "LifeInsurance": {
+        "AD&D": true
+      },
+      "InternationalAssist": false,
+      "SpecialConsults": [],
+      "AccidentCoverage": true,
+      "HospitalNetworkAccess": true
+    }
+  },
+  {
+    "Plan": "Maxicare PLUS Platinum (SME)",
+    "Consultations": {
+      "Outpatient": "Full",
+      "Inpatient": "Full",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Full diagnostics within ABL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Optional executive check-ups"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "ABL",
+      "Amount": "Highest ABL tier"
+    },
+    "Accommodation": {
+      "RoomType": "Private Room (varies)",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": true,
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": "Optional"
+      },
+      "InternationalAssist": false,
+      "SpecialConsults": [],
+      "CancerCoverage": "Optional",
+      "WellnessPrograms": true,
+      "ExecutiveCheckups": "Optional"
+    }
+  },
+  {
+    "Plan": "Maxicare PLUS Gold (SME)",
+    "Consultations": {
+      "Outpatient": "Full",
+      "Inpatient": "Full",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Full diagnostics within ABL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Optional executive check-ups"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "ABL",
+      "Amount": "Mid–High ABL tier"
+    },
+    "Accommodation": {
+      "RoomType": "Private Room (varies)",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": true,
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": "Optional"
+      },
+      "InternationalAssist": false,
+      "SpecialConsults": [],
+      "CancerCoverage": "Optional",
+      "WellnessPrograms": true,
+      "ExecutiveCheckups": "Optional"
+    }
+  },
+  {
+    "Plan": "Maxicare PLUS Silver (SME)",
+    "Consultations": {
+      "Outpatient": "Full",
+      "Inpatient": "Full",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Full diagnostics within ABL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Optional executive check-ups"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "ABL",
+      "Amount": "Mid ABL tier"
+    },
+    "Accommodation": {
+      "RoomType": "Semi‑Private Room",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": true,
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": "Optional"
+      },
+      "InternationalAssist": false,
+      "SpecialConsults": [],
+      "CancerCoverage": "Optional",
+      "WellnessPrograms": true,
+      "ExecutiveCheckups": "Optional"
+    }
+  },
+  {
+    "Plan": "Maxicare PLUS Bronze (SME)",
+    "Consultations": {
+      "Outpatient": "Full",
+      "Inpatient": "Full",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Fecalysis",
+        "Chest X-ray",
+        "APE",
+        "Full diagnostics within ABL"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": [
+        "Optional executive check-ups"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "ABL",
+      "Amount": "Lowest ABL tier"
+    },
+    "Accommodation": {
+      "RoomType": "Semi‑Private Room",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [
+        "Hernias",
+        "Benign tumors",
+        "Migraines",
+        "Cysts",
+        "Hemorrhoids"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "DreadedPEC": {
+      "Examples": [
+        "Cancer",
+        "Diabetes",
+        "Hypertension",
+        "COPD",
+        "CKD",
+        "Stroke",
+        "Arthritis",
+        "Chronic dermatoses",
+        "Congenital illnesses"
+      ],
+      "Coverage": "Within ABL"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": true,
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": "Optional"
+      },
+      "InternationalAssist": false,
+      "SpecialConsults": [],
+      "CancerCoverage": "Optional",
+      "WellnessPrograms": true,
+      "ExecutiveCheckups": "Optional"
+    }
+  },
+  {
+    "Plan": "Maxicare Corporate",
+    "Consultations": {
+      "Outpatient": "Customizable",
+      "Inpatient": "Customizable",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": "Customizable diagnostics"
+    },
+    "Procedures": {
+      "Inpatient": true,
+      "Outpatient": true,
+      "Emergency": true,
+      "Special": "Customizable procedures"
+    },
+    "CoverageLimit": {
+      "Type": "Custom",
+      "Amount": "Customizable"
+    },
+    "Accommodation": {
+      "RoomType": "Private Room (as selected)",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": "Customizable",
+      "Coverage": "Per custom MBL/ABL terms"
+    },
+    "DreadedPEC": {
+      "Examples": "Customizable",
+      "Coverage": "Per custom MBL/ABL terms"
+    },
+    "OtherBenefits": {
+      "PreventiveCare": "Customizable",
+      "Dental": "Optional",
+      "LifeInsurance": {
+        "AD&D": "Optional"
+      },
+      "InternationalAssist": "Optional",
+      "SpecialConsults": "Optional",
+      "CancerCoverage": "Optional",
+      "WellnessPrograms": true,
+      "ExecutiveCheckups": true
+    }
+  },
+  {
+    "Plan": "PRIMA Gold (Prepaid Card)",
+    "Consultations": {
+      "Outpatient": "Unlimited PCC consults",
+      "Inpatient": "Not included",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Diagnostic Set A"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": false,
+      "Outpatient": false,
+      "Emergency": true,
+      "Special": []
+    },
+    "CoverageLimit": {
+      "Type": "ER",
+      "Amount": 20000
+    },
+    "Accommodation": {
+      "RoomType": "ER Only",
+      "EROnly": true
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "DreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "OtherBenefits": {
+      "Dental": "Mild prophylaxis via MetroDental",
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "TeleConsult": true,
+      "EmergencyUse": "Single-use only"
+    }
+  },
+  {
+    "Plan": "PRIMA Silver (Prepaid Card)",
+    "Consultations": {
+      "Outpatient": "Unlimited PCC consults",
+      "Inpatient": "Not included",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "CBC",
+        "Urinalysis",
+        "Diagnostic Set A"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": false,
+      "Outpatient": false,
+      "Emergency": true,
+      "Special": []
+    },
+    "CoverageLimit": {
+      "Type": "ER",
+      "Amount": 20000
+    },
+    "Accommodation": {
+      "RoomType": "ER Only",
+      "EROnly": true
+    },
+    "AcuteIllnesses": [
+      "Dengue",
+      "Pneumonia",
+      "Viral infections",
+      "Bacterial infections",
+      "Animal bites",
+      "Injuries"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "DreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "OtherBenefits": {
+      "Dental": "Mild prophylaxis via MetroDental",
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "TeleConsult": true,
+      "EmergencyUse": "Single-use only",
+      "AgeLimit": "Up to 59 years"
+    }
+  },
+  {
+    "Plan": "PRIMA Consult (MaxiHealth)",
+    "Consultations": {
+      "Outpatient": "Unlimited PCC consults",
+      "Inpatient": "Not included",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "Basic labs"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": false,
+      "Outpatient": false,
+      "Emergency": false,
+      "Special": []
+    },
+    "CoverageLimit": {
+      "Type": "N/A",
+      "Amount": null
+    },
+    "Accommodation": {
+      "RoomType": "Clinic Only",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Common acute conditions"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "DreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "OtherBenefits": {
+      "EmergencyUse": "Not included"
+    }
+  },
+  {
+    "Plan": "PRIMA Access (MaxiHealth)",
+    "Consultations": {
+      "Outpatient": "Unlimited PCC consults",
+      "Inpatient": "Not included",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "Diagnostic Set A"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": false,
+      "Outpatient": false,
+      "Emergency": false,
+      "Special": []
+    },
+    "CoverageLimit": {
+      "Type": "N/A",
+      "Amount": null
+    },
+    "Accommodation": {
+      "RoomType": "Clinic Only",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Common acute/general illnesses"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "DreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "OtherBenefits": {
+      "EmergencyUse": "Not included"
+    }
+  },
+  {
+    "Plan": "PRIMA Elite (MaxiHealth)",
+    "Consultations": {
+      "Outpatient": "Unlimited consults + APE",
+      "Inpatient": "Not included",
+      "Included": true
+    },
+    "LabTests": {
+      "Included": true,
+      "Tests": [
+        "Diagnostic Set A",
+        "3 advanced tests"
+      ]
+    },
+    "Procedures": {
+      "Inpatient": false,
+      "Outpatient": false,
+      "Emergency": false,
+      "Special": [
+        "Some dental during APE"
+      ]
+    },
+    "CoverageLimit": {
+      "Type": "N/A",
+      "Amount": null
+    },
+    "Accommodation": {
+      "RoomType": "Clinic Only",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Acute/general illnesses"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "DreadedPEC": {
+      "Examples": [],
+      "Coverage": "None"
+    },
+    "OtherBenefits": {
+      "AnnualPhysicalExam": true,
+      "Dental": "Some dental during APE"
+    }
+  },
+  {
+    "Plan": "Maxicare LifesavER",
+    "Consultations": {
+      "Outpatient": "ER only",
+      "Inpatient": "Not included",
+      "Included": false
+    },
+    "LabTests": {
+      "Included": false,
+      "Tests": []
+    },
+    "Procedures": {
+      "Inpatient": false,
+      "Outpatient": false,
+      "Emergency": true,
+      "Special": []
+    },
+    "CoverageLimit": {
+      "Type": "ER",
+      "Amount": 25000
+    },
+    "Accommodation": {
+      "RoomType": "ER (Outpatient) Only",
+      "EROnly": true
+    },
+    "AcuteIllnesses": [
+      "Accidents",
+      "Dengue",
+      "Pneumonia",
+      "Viral infections"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [],
+      "Coverage": "Not covered"
+    },
+    "DreadedPEC": {
+      "Examples": [],
+      "Coverage": "Not covered"
+    },
+    "OtherBenefits": {
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "EmergencyUse": "Outpatient ER only"
+    }
+  },
+  {
+    "Plan": "Maxicare LifesavER+",
+    "Consultations": {
+      "Outpatient": "ER only",
+      "Inpatient": "Limited (possible confinement)",
+      "Included": false
+    },
+    "LabTests": {
+      "Included": false,
+      "Tests": []
+    },
+    "Procedures": {
+      "Inpatient": "Limited (if admitted)",
+      "Outpatient": false,
+      "Emergency": true,
+      "Special": []
+    },
+    "CoverageLimit": {
+      "Type": "ER + Confinement",
+      "Amount": 50000
+    },
+    "Accommodation": {
+      "RoomType": "ER + possible Confinement",
+      "EROnly": false
+    },
+    "AcuteIllnesses": [
+      "Accidents",
+      "Dengue",
+      "Pneumonia",
+      "Viral infections"
+    ],
+    "NonDreadedPEC": {
+      "Examples": [],
+      "Coverage": "Not covered"
+    },
+    "DreadedPEC": {
+      "Examples": [],
+      "Coverage": "Not covered"
+    },
+    "OtherBenefits": {
+      "LifeInsurance": {
+        "AD&D": 50000
+      },
+      "EmergencyUse": "Outpatient ER with possible confinement",
+      "GlobalEmergencyAssist": "Assist America"
+    }
+  }
+]

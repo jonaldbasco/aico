@@ -1,44 +1,34 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using aico.core.app.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace aico.core.app.Sources
 {
-    public class aicoDBContext : DbContext
-    {
-        public aicoDBContext(DbContextOptions<aicoDBContext> options)
-        : base(options) { }
-
-        public DbSet<plan> plans { get; set; }
-    }
-
-    public class plan
-    {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public bool active { get; set; }
-    }
-    // Prerequisite references
-    // Microsoft.EntityFrameworkCore
-    // Microsoft.EntityFrameworkCore.SqlServer
-    // Microsoft.EntityFrameworkCore.Tools
-
-    // Steps
-    // 1 - Create a DBContext Class for your database (aicoDBContext)
-
-    // 2 - Set the connection string in appsettings.json (check the appsettings.json)
-
-    // 3 - Create a class/model of your table
-
-    // 4 - Add the below code before the line of "var app = builder.Build();"
-    // var aicoConnectionString = builder.Configuration.GetConnectionString("aicoConnectionString");
-    // builder.Services.AddDbContext<aicoDBContext>(options => options.UseSqlServer(aicoConnectionString));
-
+    // https://sqlitebrowser.org/dl/ to download SQLite Browser
     // 5 - Execute the below script in terminal
-    // dotnet ef migrations add AicoMigration
-    // dotnet net ef database update
 
-    // Note: if dotnet is not recognized execute the below code before executing the mirgration and update
     // dotnet tool install --global dotnet-ef
+    // dotnet ef migrations add BasicProfileClass
+    // dotnet ef migrations add HealthSummaryClass
+    // dotnet ef migrations add DiseasesClass
+    // dotnet ef migrations add IsCoveredClass
+    // dotnet ef migrations add ProcedureClass
+    // dotnet ef migrations add CostClass
+    // dotnet ef database update
+    // dotnet ef migrations list
+
+    public class AicoDBContext(DbContextOptions<AicoDBContext> options) : DbContext(options)
+    {
+        public DbSet<BasicProfileClass> BasicProfileClass { get; set; }
+        public DbSet<HealthSummaryClass> HealthSummaryClass { get; set; }
+        public DbSet<DiseasesClass> DiseasesClass { get; set; }
+        public DbSet<IsCoveredClass> IsCoveredClass { get; set; }
+        public DbSet<ProcedureClass> ProcedureClass { get; set; }
+        public DbSet<CostClass> CostClass { get; set; }
+
+    }
+
 }
+

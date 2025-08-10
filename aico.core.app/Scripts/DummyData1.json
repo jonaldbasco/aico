@@ -1,0 +1,80 @@
+{
+  "BasicProfile": {
+    "Name": "Juan Dela Cruz",
+    "Age": 45,
+    "Gender": "Male",
+    "DateOfBirth": "1980-03-15",
+    "ContactNumber": "+63 917 123 4567",
+    "Email": "juan.delacruz@email.com",
+    "Address": {
+      "Street": "123 Sampaguita St.",
+      "City": "Quezon City",
+      "Province": "Metro Manila",
+      "PostalCode": "1100"
+    },
+    "MaritalStatus": "Married",
+    "BloodType": "O+",
+    "EmergencyContact": {
+      "Name": "Maria Dela Cruz",
+      "Relationship": "Spouse",
+      "ContactNumber": "+63 917 765 4321"
+    },
+    "HMOProvider": "Maxicare",
+    "MaxicareTier": "Prima Gold (with inpatient/outpatient + annual physical exam + diagnostics)",
+    "HMONumber": "MXC-1234567890"
+  },
+  "MedicalHistory": {
+    "Conditions": [
+      {
+        "Name": "Diabetes Type 2",
+        "Status": "Diagnosed 2 years ago",
+        "Notes": "Under oral medication"
+      },
+      {
+        "Name": "Hypertension",
+        "Status": "Diagnosed 1 year ago",
+        "Notes": "Controlled with maintenance meds"
+      }
+    ],
+    "FamilyHistory": {
+      "Conditions": [
+        "Heart disease",
+        "Kidney disease"
+      ],
+      "Side": "Maternal"
+    },
+    "SmokingHistory": {
+      "Status": "Former smoker",
+      "QuitYear": 2022
+    },
+    "Allergy": "None reported"
+  },
+  "DiagnosticResults": {
+    "FastingBloodGlucose": {
+      "Result": "138 mg/dL (high)",
+      "Date": "July 2025"
+    },
+    "HbA1c": {
+      "Result": "7.5% (elevated)",
+      "Date": "July 2025"
+    },
+    "Creatinine": {
+      "Result": "1.3 mg/dL (borderline)",
+      "Date": "July 2025"
+    },
+    "LipidPanel": {
+      "LDL": 160,
+      "HDL": 35,
+      "Notes": "Abnormal",
+      "Date": "July 2025"
+    },
+    "BloodPressure": {
+      "Result": "145/92 mmHg",
+      "MonitoringStatus": "Ongoing"
+    },
+    "ECG": {
+      "Result": "Normal sinus rhythm",
+      "Date": "April 2025"
+    }
+  }
+}

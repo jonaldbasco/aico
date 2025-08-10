@@ -3,9 +3,9 @@ using OpenAI.Responses;
 using Microsoft.Extensions.Configuration;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
-using Microsoft.SemanticKernel.ChatCompletion; 
+using Microsoft.SemanticKernel.ChatCompletion;
 
-namespace aico.core.app.Classes
+namespace aico.core.app.Models
 {
 #pragma warning disable OPENAI001
     public class OpenAIClass
@@ -22,7 +22,7 @@ namespace aico.core.app.Classes
         }
 
         //Text Request
-        public OpenAIResponse send(string text) 
+        public OpenAIResponse Send(string text) 
         {
             OpenAIResponse response = client.CreateResponse(text);
             string result = response.GetOutputText();
