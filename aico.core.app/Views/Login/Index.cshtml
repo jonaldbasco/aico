@@ -1,6 +1,90 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿﻿
+    @{
+        Layout = null;
+    }
 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Health Plan Solution Project">
+        <meta name="author" content="AIco">
+        <title>AICo - Sign In</title>   
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/aicobootstrap.css" asp-append-version="true" />
+    </head>
+    <body class="text-center">
+        <div id="root" style="background-image: url('/images/healthcare-hero.jpg')">
+            <div role="region" aria-label="Notifications (F8)" tabindex="-1" style="pointer-events: none;">
+                <ol tabindex="-1" class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]"></ol>
+            </div>
+            <div class="min-h-screen bg-gradient-to-br from-background via-primary/5 to-accent/10 p-4">
+                <div class="max-w-xl mx-auto pt-8">
+                    <div class="text-center mb-8">
+                        <h1 class="text-4xl font-bold text-foreground mb-4">Welcome to <span class="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">AICo</span></h1>
+                        <p class="text-lg text-muted-foreground">Your intelligent health benefits companion for Philippine Healthcare</p>
+                    </div>
+                    <div class="rounded-lg text-card-foreground shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+                        <div class="flex flex-col space-y-1.5 p-6 text-center pb-6">
+                            <h3 class="font-semibold tracking-tight text-2xl text-primary flex items-center justify-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-6 h-6">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Sign into your account
+                            </h3>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <form class="space-y-6">
+                                <div class="grid gap-4">
+                                    <div class="space-y-2">
+                                        <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium flex items-center gap-2" for="name">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-4 h-4">
+                                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                            Username
+                                        </label>
+                                        <input id="username" class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm h-12" required="" value="" >
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium flex items-center gap-2" for="address">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-4 h-4">
+                                                <path d="M12 17C15.3137 17 18 14.3137 18 11V7C18 3.68629 15.3137 1 12 1C8.68629 1 6 3.68629 6 7V11C6 14.3137 8.68629 17 12 17Z" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                                <rect x="5" y="15" width="14" height="8" rx="2" fill="#333" />
+                                            </svg>
+                                            Password
+                                        </label>
+                                        <input id="password" type="password" class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm h-12" required="" value="" >
+                                    </div>
+                                    <div class="space-y-2">
+                                        <span class="text-danger">@ViewBag.Error</span>
+                                    </div>
+                                </div>
+                                <button id="btnSign" class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-gradient-to-r from-primary to-primary-glow text-primary-foreground hover:shadow-xl hover:scale-105 border-0 h-11 rounded-md px-8 w-full mt-8" >Sign In</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+             $(document).ready(function() {
+                // Your jQuery code here will execute once the DOM is ready.
+                console.log("The document is ready");
+
+                // Example: Attach a click handler to a button
+                $("#btnSign").click(function() {
+                    var newUrl = '@Url.Action("Index", "Home")'; //, new { param1 = value1, param2 = value2 })';
+                    window.location.href = newUrl;
+                });
+            });
+        </script>
+    </body>
+    </html>
