@@ -76,9 +76,8 @@ namespace aico.core.app.Controllers
                 var procedureJson = JObject.Parse(existingProcedure.Summary);
                 ViewBag.Procedure = procedureJson;
             }
-
             // This action can be used to return a view or redirect to another action
-            return View();
+            return View("~/Views/AIRecommend/Result.cshtml");
         }
 
         //[HttpPost("getBasicProfile")]
