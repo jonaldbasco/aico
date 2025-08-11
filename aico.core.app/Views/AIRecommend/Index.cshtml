@@ -43,7 +43,7 @@
                                 <path d="m6 9 6 6 6-6"></path>
                             </svg>
                         </button> *@
-                        <input id="username" class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm h-12" placeholder="Input a procedure" required="" value="">
+                        <input id="chosenProcedure" class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm h-12" placeholder="Input a procedure" required="" value="">
                     </div>
                     <div class="bg-primary/5 p-4 rounded-lg">
                         <h4 class="font-semibold mb-2 flex items-center gap-2">
@@ -100,7 +100,10 @@
         });
 
         $("#btnGetAi").click(function() {
-            var newUrl = '@Url.Action("Result", "AIRecommend")'; //, new { param1 = value1, param2 = value2 })';
+            e.preventDefault(); // Prevent the default form submission
+            var fileName = "DummyData1";
+            var chosenProcedure = $("#chosenProcedure").val();
+            var newUrl = '@Url.Action("Procedure", "Agent")' + '?fileName=' + encodeURIComponent(fileName)+ '&chosenProcedure=' + encodeURIComponent(chosenProcedure);
             window.location.href = newUrl;
         });
     });

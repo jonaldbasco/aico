@@ -1,62 +1,79 @@
 using aico.core.app.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using Microsoft.Extensions.Configuration;
 using aico.core.app.Sources;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+using OpenAI;
+using System.Diagnostics;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace aico.core.app.Controllers
 {
-    public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IConfiguration _configuration;
-        private readonly AicoDBContext _aicoDBContext;
+    //public class HomeController: Controller
+    //{
+    //    private readonly HttpClient _client;
+    //    private readonly AicoDBContext _context;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, AicoDBContext aicoDBContext)
-        {
-            _logger = logger;
-            _configuration = configuration;
-            _aicoDBContext = aicoDBContext;
-        }
+    //    public HomeController(IHttpClientFactory factory, AicoDBContext context)
+    //    {
+    //        _client = factory.CreateClient("IgnoreSSL");
+    //        _client.BaseAddress = new Uri("http://localhost:8000/");
+    //        _context = context;
+    //    }
 
-        public IActionResult Index()
-        {
-            //TEST FOR OPENAI
-            //OpenAIClass oac = new OpenAIClass(_configuration);
-            //string result = oac.send("What is Accenture?").GetOutputText();
+    //    public async Task<ActionResult> Index(string fileName)
+    //    {
+    //        //const string fileName = "DummyData1";
 
-            //TEST FOR DATABASE
-            //List<plan> plans = _aicoDBContext.plans.ToList();
+    //        var content = new FormUrlEncodedContent(new[]{ new KeyValuePair<string, string>("fileName", fileName) });
 
-            //plan p = new plan();
-            //p.name = "test plan 1";
-            //p.description = "test plan 1";
-            //p.active = true;
-            //_aicoDBContext.plans.Add(p);
-            //_aicoDBContext.SaveChanges();
+    //        //var userProfile = GetBasicProfile(content);
+    //        var basicProfile = await _client.PostAsync("Agent/BasicProfile", content);
+    //        basicProfile.EnsureSuccessStatusCode();
+    //        //var getBasicProfile = await _client.PostAsync("Agent/Diseases", content);
 
-            return View();
-        }
+    //        //var finalUserProfile = getBasicProfile.ToString();
+    //        var json = await basicProfile.Content.ReadAsStringAsync();
+    //        Console.WriteLine("Response: " + json);
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+    //        if (json == "User exists")
+    //        {
+    //            var existingUser = await _context.BasicProfileClass
+    //                .OrderByDescending(u => u.CreatedAt)
+    //                .FirstOrDefaultAsync(u => u.FileName == fileName);
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    //            if (existingUser != null)
+    //            {
+    //                Console.WriteLine("View.Dashboard.Json: " + existingUser.Summary);
+    //                ViewBag.BasicProfile = JObject.Parse(existingUser.Summary);
+    //                return View(); // ? Return early to avoid overwriting ViewBag
+    //            }
 
-        public JsonResult PromptResult(string prompt)
-        {
+    //            ViewBag.Error = "User exists but not found in DB.";
+    //            return View("Error");
+    //        }
 
-            OpenAIClass oac = new OpenAIClass(_configuration);
-            string result = oac.Send(prompt).GetOutputText();
-            ViewBag.Result = result;
+    //        // Handle both array and object responses safely
+    //        try
+    //        {
+    //            var data = JArray.Parse(json);
+    //            ViewBag.BasicProfile = data;
+    //        }
+    //        catch (JsonReaderException)
+    //        {
+    //            ViewBag.BasicProfile = JObject.Parse(json);
+    //        }
 
-            return Json(new { });
-        }
-    }
+    //        return View();
+    //    }
+
+    //    public IActionResult Privacy()
+    //    {
+    //        return View();
+    //    }
+    //}
+
+    
 }

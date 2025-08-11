@@ -75,16 +75,18 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script>
-             $(document).ready(function() {
-                // Your jQuery code here will execute once the DOM is ready.
+            $(document).ready(function () {
                 console.log("The document is ready");
 
-                // Example: Attach a click handler to a button
-                $("#btnSign").click(function() {
-                    var newUrl = '@Url.Action("Index", "Home")'; //, new { param1 = value1, param2 = value2 })';
+                $("#btnSign").click(function (e) {
+                    e.preventDefault(); // Prevent the default form submission
+                    var fileName = $("#username").val();
+                    var newUrl = '@Url.Action("GetDashboardData", "Agent")' + '?fileName=' + encodeURIComponent(fileName);
+                    console.log("Redirecting to: " + newUrl);
                     window.location.href = newUrl;
                 });
             });
         </script>
+
     </body>
     </html>
