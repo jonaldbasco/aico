@@ -965,6 +965,10 @@ body {
     min-width: var(--radix-select-trigger-width)
 }
 
+.max-w-xl {
+    max-width: 25rem
+}
+
 .max-w-2xl {
     max-width: 42rem
 }

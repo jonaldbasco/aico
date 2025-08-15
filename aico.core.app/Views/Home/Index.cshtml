@@ -2,6 +2,7 @@
     ViewData["Title"] = "Health Dashboard";
     var basicProfile = ViewBag.ExisingUser;
     var name = basicProfile?["BasicProfile"]?["Name"]?.ToString() ?? "Guest";
+    //var hmo = basicProfile?["Basc"]
     var diseasesArray = ViewBag.Diseases as Newtonsoft.Json.Linq.JArray;
     var diseasesList = diseasesArray?.Select(d => d.ToString()).ToList() ?? new List<string> { "N/A" };
     var labTests = ViewBag.LabTestsSummary as Newtonsoft.Json.Linq.JArray;
@@ -76,14 +77,18 @@
                             </svg>
                             Health Status
                         </h3>
+                        <div class="flex items-start justify-between ">
+                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 bg-accent/20 text-accent">Active</div>
+                        </div>
                     </div>
                     <div class="p-6 pt-0">
-                        <div class="flex items-start justify-between ">
-                            <span class="badge bg-outline-succcess rounded-full">Success</span>
-                            <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent hover:bg-secondary/80 bg-accent/20 text-accent">Active</div>
+
+                        <div class="">
+                            <span class="badge bg-warning rounded-pill text-dark">Success</span>
                             @foreach (var disease in diseasesList)
                             {
-                                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground">@disease</div>
+                                 <span class="badge bg-warning rounded-pill text-dark">@disease</span>
+                                @* <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-foreground">@disease</div> *@
                             }
                         </div>
                         <p class="text-sm text-muted-foreground">Last checkup: 3 months ago</p>
